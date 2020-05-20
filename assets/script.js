@@ -25,21 +25,21 @@ $(document).ready(function () {
         "&APPID=" +
         appID;
     }
-    $.getJSON(weather, function (json) {
-      $("#city").html(json.name);
-      //TODO: Add date data
-      $("#date").html();
+    $.getJSON(weather, function (response) {
+      $("#city").html(response.name);
+      // Gets current date from moment
+      $("#date").html(moment().format("(MM/DD/YYYY)"));
       $("#weatherIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png"
+        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
       );
-      // converts from K to F and rounds to nearest int
+      // Converts from K to F and rounds to nearest int
       $("#temperature").html(
-        Math.round(((json.main.temp - 273.15) * 9) / 5 + 32) + "°F"
+        Math.round(((response.main.temp - 273.15) * 9) / 5 + 32) + "°F"
       );
-      $("#humidity").html(json.main.humidity + "%");
-      // converts from meters per sec to miles per hour and rounds to nearest int
-      $("#windSpeed").html(Math.round(json.wind.speed * 2.237) + " MPH");
+      $("#humidity").html(response.main.humidity + "%");
+      // Converts from meters per sec to miles per hour and rounds to nearest int
+      $("#windSpeed").html(Math.round(response.wind.speed * 2.237) + " MPH");
       //TODO: Add UV index data
       $("#uvIndex").html();
     });
