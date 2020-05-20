@@ -7,9 +7,8 @@
 //   - date
 //   - temp
 //   - humidity
-// 9. Add symbols to incicate cloudy, sunny, etc
-// 10. Add Corresponding color to uv index
-// 11. Reformat
+// 9. Add Corresponding color to uv index
+// 10. Reformat
 
 $(document).ready(function () {
   // My API Key
@@ -28,15 +27,21 @@ $(document).ready(function () {
     }
     $.getJSON(weather, function (json) {
       $("#city").html(json.name);
-      $("#weatherDescription").html(json.weather[0].description);
+      //TODO: Add date data
+      $("#date").html();
       $("#weatherIcon").attr(
         "src",
         "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png"
       );
-      $("#temperature").html(json.main.temp);
-      $("#humidity").html(json.main.humidity);
-      $("#windSpeed").html(json.main.windSpeed);
-      $("#uvIndex").html(json.main.uvIndex);
+      // converts from K to F and rounds to nearest int
+      $("#temperature").html(
+        Math.round(((json.main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#humidity").html(json.main.humidity + "%");
+      // converts from meters per sec to miles per hour and rounds to nearest int
+      $("#windSpeed").html(Math.round(json.wind.speed * 2.237) + " MPH");
+      //TODO: Add UV index data
+      $("#uvIndex").html();
     });
   });
 });
