@@ -13,19 +13,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" src="assets/script.js" />
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
-    <!--       
-          1. Connect to API
-            - Use past weather activity example
-          2. Creat a div containing the below -
-            - Use movie activity example
-          - City Name (Date)
-          - Temp
-          - Humidity 
-          - Wind Speed 
-          - UV Index 
-          3. Create an input to search a specific city
+    <container>
+      <!--       
           4. Save city to local storage
           5. Post array of past city searches as a list of buttons
             - prepend most recent search to top of list
@@ -39,6 +32,30 @@
           10. Add Corresponding color to uv index
           11. Reformat
         -->
+      <!-- Search Button Row -->
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <input type="text" placeholder="City" /><button
+            type="button"
+            class="query_btn btn btn-default btn-sm"
+          >
+            Search</button
+          ><br />
+        </div>
+      </div>
+      <!-- Current Weather Display Row -->
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2>City: <span id="city"></span></h2>
+          <h2>Description: <span id="weatherDescription"> </span></h2>
+          <img id="weatherIcon" src="" />
+          <h2>Temperature: <span id="temperature"></span></h2>
+          <h2>Humidity: <span id="humidity"></span></h2>
+          <h2>Wind Speed: <span id="windSpeed"></span></h2>
+          <h2>UV Index: <span id="uvIndex"></span></h2>
+        </div>
+      </div>
+    </container>
     <!-- JS Links -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
