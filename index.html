@@ -3,58 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather Dashboard</title>
     <!-- CSS Links -->
-    <link rel="stylesheet" scr="assets/reset.css" />
+    <link rel="stylesheet" href="assets/reset.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
     />
-    <link rel="stylesheet" src="assets/script.js" />
+    <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
-    <!--       
-          1. Connect to API
-            - Use past weather activity example
-          2. Creat a div containing the below -
-            - Use movie activity example
-          - City Name (Date)
-          - Temp
-          - Humidity 
-          - Wind Speed 
-          - UV Index 
-          3. Create an input to search a specific city
-          4. Save city to local storage
-          5. Post array of past city searches as a list of buttons
-            - prepend most recent search to top of list
-          6. Replace div content with most recent search information 
-          7. Create div for 5 day forecast
-          8. Create a module (maybe?) for each of the next 5 days
-            - date
-            - temp 
-            - humidity
-          9. Add symbols to incicate cloudy, sunny, etc
-          10. Add Corresponding color to uv index
-          11. Reformat
-        -->
-    <!-- JS Links -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <div class="container">
+      <!-- Search Button Row -->
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <input type="text" placeholder="City" /><button
+            type="button"
+            class="query_btn btn btn-default btn-sm"
+          >
+            Search</button
+          ><br />
+        </div>
+      </div>
+      <!-- Current Weather Display Row -->
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2>City: <span id="city"></span></h2>
+          <h2>Description: <span id="weatherDescription"> </span></h2>
+          <img id="weatherIcon" src="" />
+          <h2>Temperature: <span id="temperature"></span></h2>
+          <h2>Humidity: <span id="humidity"></span></h2>
+          <h2>Wind Speed: <span id="windSpeed"></span></h2>
+          <h2>UV Index: <span id="uvIndex"></span></h2>
+        </div>
+      </div>
+    </div>
+    <!-- JS links -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/script.js"></script>
   </body>
 </html>
