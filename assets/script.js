@@ -1,14 +1,12 @@
-// 4. Save city to local storage
-// 5. Post array of past city searches as a list of buttons
-//   - prepend most recent search to top of list
-// 6. Replace div content with most recent search information
-// 7. Create div for 5 day forecast
-// 8. Create a module (maybe?) for each of the next 5 days
+// 1. When you click on a city-button make that city show on screen
+// 2. Save cities array to local storage so that it persists through refresh
+// 3. Create div for 5 day forecast
+// 4. Create a module (maybe?) for each of the next 5 days
 //   - date
 //   - temp
 //   - humidity
-// 9. Add Corresponding color to uv index
-// 10. Reformat
+// 5. Add UV index data plus corresponding color
+// 6. Reformat
 
 $(document).ready(function () {
   // My API Key
