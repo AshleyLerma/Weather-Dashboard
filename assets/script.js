@@ -1,12 +1,11 @@
-// 1. When you click on a city-button make that city show on screen
-// 2. Save cities array to local storage so that it persists through refresh
-// 3. Create div for 5 day forecast
-// 4. Create a module (maybe?) for each of the next 5 days
+// 1. Save cities array to local storage so that it persists through refresh
+// 2. Create div for 5 day forecast
+// 3. Create a module (maybe?) for each of the next 5 days
 //   - date
 //   - temp
 //   - humidity
-// 5. Add UV index data plus corresponding color
-// 6. Reformat
+// 4. Add UV index data plus corresponding color
+// 5. Reformat
 
 $(document).ready(function () {
   // My API Key
@@ -44,24 +43,12 @@ $(document).ready(function () {
       $("#humidity").html(response.main.humidity + "%");
       // Converts from meters per sec to miles per hour and rounds to nearest int
       $("#windSpeed").html(Math.round(response.wind.speed * 2.237) + " MPH");
+
       //TODO: Add UV index data
       $("#uvIndex").html();
     });
   }
 
-  // Render past searches as buttons on the screen
-  function renderButtons() {
-    // Clear existing buttons
-    $("#buttons-view").empty();
-    // Loop through cities array
-    for (let i = 0; i < cities.length; i++) {
-      let cityBtn = $("<button>");
-      cityBtn.addClass("city-btn");
-      cityBtn.attr("data-name", cities[i]);
-      cityBtn.text(cities[i]);
-      $("#buttons-view").prepend(cityBtn);
-    }
-  }
   // This function handles events where a city button is clicked
   $("#add-city").on("click", function (event) {
     event.preventDefault();
@@ -70,14 +57,30 @@ $(document).ready(function () {
     var city = $("#city-input").val().trim();
 
     if (city !== "") {
-      // Adding city from the textbox to our array
+      // Adding city from the textbox to cities array
       cities.push(city);
     } else {
+      // This prevents submitting a blank input
       return;
     }
-    // Calling renderButtons which handles the processing of our movie array
+    // Calling renderButtons
     renderButtons();
   });
+
+  // Render past searches as buttons on the screen
+  function renderButtons() {
+    // Clear existing buttons to prevent duplicates
+    $("#buttons-view").empty();
+    // Loop through cities array
+    for (let i = 0; i < cities.length; i++) {
+      let cityBtn = $("<button>");
+      cityBtn.addClass("city-btn");
+      cityBtn.attr("data-name", cities[i]);
+      cityBtn.text(cities[i]);
+      // Adds the new search as a button at the top of the list
+      $("#buttons-view").prepend(cityBtn);
+    }
+  }
 
   // Adding a click event listener to all elements with a class of "movie-btn"
   $(document).on("click", ".city-btn", displayCityWeather);
