@@ -14,9 +14,7 @@ $(document).ready(function () {
   var cities = [];
 
   // On click event for each button that sets a query parameter equal to the input city
-  function displayCityWeather() {
-    var city = $(".city-btn").attr("data-name");
-
+  function displayCityWeather(city) {
     // Concatinates Query URL
     let weather =
       "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -29,7 +27,6 @@ $(document).ready(function () {
       url: weather,
       method: "GET",
     }).then(function (response) {
-      console.log(city);
       $("#city").html(response.name);
       // Gets current date from moment
       $("#date").html(moment().format("(MM/DD/YYYY)"));
@@ -54,10 +51,11 @@ $(document).ready(function () {
   $("#add-city").on("click", function (event) {
     // This line grabs the input from the textbox
     let citySearch = $("#city-input").val().trim();
+    console.log(citySearch);
+    displayCityWeather(citySearch);
     if (citySearch !== "") {
-      // Adding city from the textbox to cities array
+      //   // Adding city from the textbox to cities array
       cities.push(citySearch);
-      $(".city-btn").attr("data-name", citySearch);
       // Clears textbox
       $("#city-input").val("");
       renderButtons();
@@ -74,16 +72,17 @@ $(document).ready(function () {
     // Loop through cities array
     for (let i = 0; i < cities.length; i++) {
       let cityBtn = $("<button>");
-      cityBtn.addClass("city-btn");
-      $(".city-btn").attr("data-name", cities[i]);
+      cityBtn.attr("data-name", cities[i]);
       cityBtn.text(cities[i]);
       // Adds the new search as a button at the top of the list
       $("#buttons-view").prepend(cityBtn);
+      $(document).on("click", "[data-name='" + cities[i] + "']", function (
+        event
+      ) {
+        displayCityWeather(cities[i]);
+      });
     }
   }
-
-  // Adding a click event listener to all elements with a class of "city-btn"
-  $(document).on("click", ".city-btn", displayCityWeather);
 
   // Calling the renderButtons function to display the initial buttons
   renderButtons();
