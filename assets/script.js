@@ -29,6 +29,7 @@ $(document).ready(function () {
       url: weather,
       method: "GET",
     }).then(function (response) {
+      console.log(city);
       $("#city").html(response.name);
       // Gets current date from moment
       $("#date").html(moment().format("(MM/DD/YYYY)"));
@@ -56,14 +57,14 @@ $(document).ready(function () {
     if (citySearch !== "") {
       // Adding city from the textbox to cities array
       cities.push(citySearch);
+      $(".city-btn").attr("data-name", citySearch);
+      // Clears textbox
+      $("#city-input").val("");
+      renderButtons();
     } else {
       // This prevents submitting a blank input
       return;
     }
-    $(".city-btn").attr("data-name", citySearch);
-    // Clears textbox
-    $("#city-input").val("");
-    renderButtons();
   });
 
   // Render past searches as buttons to the screen
@@ -74,7 +75,7 @@ $(document).ready(function () {
     for (let i = 0; i < cities.length; i++) {
       let cityBtn = $("<button>");
       cityBtn.addClass("city-btn");
-      cityBtn.attr("data-name", cities[i]);
+      $(".city-btn").attr("data-name", cities[i]);
       cityBtn.text(cities[i]);
       // Adds the new search as a button at the top of the list
       $("#buttons-view").prepend(cityBtn);
