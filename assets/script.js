@@ -15,22 +15,15 @@ $(document).ready(function () {
   var cities = [];
 
   // On click event for each button that sets a query parameter equal to the input city
-  $(".city-btn").click(function () {
-    var city = $(this).prev().val();
+  function displayCityWeather() {
+    var city = $(this).attr("data-name");
 
-    if ($(this).prev().attr("placeholder") == "City") {
-      // Concatinates Query URL
-      var weather =
-        "http://api.openweathermap.org/data/2.5/weather?q=" +
-        city +
-        "&APPID=" +
-        appID;
-
-      // Add new city to cities array
-      cities.push(city);
-      // Calls function to render buttons to the screen
-      renderButtons();
-    }
+    // Concatinates Query URL
+    var weather =
+      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&APPID=" +
+      appID;
 
     // Gets all the city data
     $.ajax({
@@ -54,7 +47,7 @@ $(document).ready(function () {
       //TODO: Add UV index data
       $("#uvIndex").html();
     });
-  });
+  }
 
   // Render past searches as buttons on the screen
   function renderButtons() {
@@ -69,4 +62,22 @@ $(document).ready(function () {
       $("#buttons-view").prepend(cityBtn);
     }
   }
+  // This function handles events where a city button is clicked
+  $("#add-city").on("click", function (event) {
+    event.preventDefault();
+    // This line grabs the input from the textbox
+    var city = $("#city-input").val().trim();
+
+    // Adding city from the textbox to our array
+    cities.push(city);
+
+    // Calling renderButtons which handles the processing of our movie array
+    renderButtons();
+  });
+
+  // Adding a click event listener to all elements with a class of "movie-btn"
+  $(document).on("click", ".city-btn", displayCityWeather);
+
+  // Calling the renderButtons function to display the initial buttons
+  renderButtons();
 });
