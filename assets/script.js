@@ -49,7 +49,7 @@ $(document).ready(function () {
     });
   }
 
-  // This function handles events where a city button is clicked
+  // When the city search button is clicked
   $("#add-city").on("click", function (event) {
     event.preventDefault();
 
@@ -63,12 +63,13 @@ $(document).ready(function () {
       // This prevents submitting a blank input
       return;
     }
+    // Clears textbox
     $("#city-input").val("");
-    // Calling renderButtons
+
     renderButtons();
   });
 
-  // Render past searches as buttons on the screen
+  // Render past searches as buttons to the screen
   function renderButtons() {
     // Clear existing buttons to prevent duplicates
     $("#buttons-view").empty();
@@ -83,7 +84,7 @@ $(document).ready(function () {
     }
   }
 
-  // Adding a click event listener to all elements with a class of "movie-btn"
+  // Adding a click event listener to all elements with a class of "city-btn"
   $(document).on("click", ".city-btn", displayCityWeather);
 
   // Calling the renderButtons function to display the initial buttons
