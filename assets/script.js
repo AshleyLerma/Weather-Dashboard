@@ -19,13 +19,18 @@ $(document).ready(function () {
     var query_param = $(this).prev().val();
 
     if ($(this).prev().attr("placeholder") == "City") {
+      // Concatinates Query URL
       var weather =
         "http://api.openweathermap.org/data/2.5/weather?q=" +
         query_param +
         "&APPID=" +
         appID;
     }
-    $.getJSON(weather, function (response) {
+    // Gets all the city data
+    $.ajax({
+      url: weather,
+      method: "GET",
+    }).then(function (response) {
       $("#city").html(response.name);
       // Gets current date from moment
       $("#date").html(moment().format("(MM/DD/YYYY)"));
