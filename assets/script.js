@@ -1,6 +1,6 @@
 // 1. Save cities array to local storage so that it persists through refresh
 // 2. Create div for 5 day forecast
-// 3. Create a module (maybe?) for each of the next 5 days
+// 3. Create a div (module maybe?) for each of the next 5 days
 //   - date
 //   - temp
 //   - humidity
@@ -18,7 +18,7 @@ $(document).ready(function () {
     var city = $(this).attr("data-name");
 
     // Concatinates Query URL
-    var weather =
+    let weather =
       "http://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&APPID=" +
@@ -54,7 +54,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     // This line grabs the input from the textbox
-    var city = $("#city-input").val().trim();
+    let city = $("#city-input").val().trim();
 
     if (city !== "") {
       // Adding city from the textbox to cities array
@@ -63,6 +63,7 @@ $(document).ready(function () {
       // This prevents submitting a blank input
       return;
     }
+    $("#city-input").val("");
     // Calling renderButtons
     renderButtons();
   });
