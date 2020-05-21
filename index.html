@@ -16,18 +16,22 @@
     <div class="container">
       <!-- Search Button Row -->
       <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
-          <input type="text" placeholder="City" /><button
-            type="button"
-            class="query_btn btn btn-default btn-sm"
-          >
-            Search</button
-          ><br />
+        <div class="col">
+          <form id="city-form">
+            <input id="city-input" type="text" placeholder="City" /><button
+              type="button"
+              id="add-city"
+              class="city-btn btn btn-default btn-sm"
+            >
+              Search
+            </button>
+          </form>
+          <div id="buttons-view"></div>
         </div>
       </div>
       <!-- Current Weather Display Row -->
       <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 text-center">
+        <div class="col">
           <h2><span id="city"></span> <span id="date"></span></h2>
           <img id="weatherIcon" src="" />
           <p>Temperature: <span id="temperature"></span></p>

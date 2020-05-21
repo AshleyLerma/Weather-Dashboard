@@ -13,19 +13,27 @@
 $(document).ready(function () {
   // My API Key
   var appID = "3f8ee6c995827a58abf1e6cb5e587a74";
+  // Empty array for searched cities
+  var cities = [];
 
   // On click event for each button that sets a query parameter equal to the input city
-  $(".query_btn").click(function () {
-    var query_param = $(this).prev().val();
+  $(".city-btn").click(function () {
+    var city = $(this).prev().val();
 
     if ($(this).prev().attr("placeholder") == "City") {
       // Concatinates Query URL
       var weather =
         "http://api.openweathermap.org/data/2.5/weather?q=" +
-        query_param +
+        city +
         "&APPID=" +
         appID;
+
+      // Add new city to cities array
+      cities.push(city);
+      // Calls function to render buttons to the screen
+      renderButtons();
     }
+
     // Gets all the city data
     $.ajax({
       url: weather,
@@ -49,4 +57,18 @@ $(document).ready(function () {
       $("#uvIndex").html();
     });
   });
+
+  // Render past searches as buttons on the screen
+  function renderButtons() {
+    // Clear existing buttons
+    $("#buttons-view").empty();
+    // Loop through cities array
+    for (let i = 0; i < cities.length; i++) {
+      let cityBtn = $("<button>");
+      cityBtn.addClass("city-btn");
+      cityBtn.attr("data-name", cities[i]);
+      cityBtn.text(cities[i]);
+      $("#buttons-view").prepend(cityBtn);
+    }
+  }
 });
