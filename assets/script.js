@@ -65,12 +65,16 @@ $(document).ready(function () {
   // This function handles events where a city button is clicked
   $("#add-city").on("click", function (event) {
     event.preventDefault();
+
     // This line grabs the input from the textbox
     var city = $("#city-input").val().trim();
 
-    // Adding city from the textbox to our array
-    cities.push(city);
-
+    if (city !== "") {
+      // Adding city from the textbox to our array
+      cities.push(city);
+    } else {
+      return;
+    }
     // Calling renderButtons which handles the processing of our movie array
     renderButtons();
   });
