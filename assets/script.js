@@ -15,7 +15,7 @@ $(document).ready(function () {
 
   // On click event for each button that sets a query parameter equal to the input city
   function displayCityWeather() {
-    var city = $(this).attr("data-name");
+    var city = $(".city-btn").attr("data-name");
 
     // Concatinates Query URL
     let weather =
@@ -51,21 +51,18 @@ $(document).ready(function () {
 
   // When the city search button is clicked
   $("#add-city").on("click", function (event) {
-    event.preventDefault();
-
     // This line grabs the input from the textbox
-    let city = $("#city-input").val().trim();
-
-    if (city !== "") {
+    let citySearch = $("#city-input").val().trim();
+    if (citySearch !== "") {
       // Adding city from the textbox to cities array
-      cities.push(city);
+      cities.push(citySearch);
     } else {
       // This prevents submitting a blank input
       return;
     }
+    $(".city-btn").attr("data-name", citySearch);
     // Clears textbox
     $("#city-input").val("");
-
     renderButtons();
   });
 
