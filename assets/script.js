@@ -1,11 +1,3 @@
-// 1. Add UV index data plus corresponding color
-// 2. Create div for 5 day forecast
-// 3. Create a div (module maybe?) for each of the next 5 days
-//   - date
-//   - temp
-//   - humidity
-// 4. Reformat
-
 $(document).ready(function () {
   // My API Key
   var appID = "3f8ee6c995827a58abf1e6cb5e587a74";
@@ -42,6 +34,7 @@ $(document).ready(function () {
       $("#windSpeed").html(Math.round(response.wind.speed * 2.237) + " MPH");
 
       getUV(response);
+      getFiveDay(response);
     });
   }
 
@@ -77,6 +70,90 @@ $(document).ready(function () {
           .removeClass("moderate")
           .removeClass("favorable");
       }
+    });
+  }
+
+  // Five Day Forecast Function
+  function getFiveDay(response) {
+    let fiveDay =
+      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      response.name +
+      "&appid=" +
+      appID;
+
+    $.ajax({
+      url: fiveDay,
+      method: "GET",
+    }).then(function (info) {
+      // Day 1
+      $("#dayOneDate").html(moment().add(1, "days").format("(MM/DD/YYYY)"));
+      $("#dayOneIcon").attr(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          info.list[0].weather[0].icon +
+          ".png"
+      );
+      // Converts from K to F and rounds to nearest int
+      $("#dayOneTemp").html(
+        Math.round(((info.list[0].main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#dayOneHumidity").html(info.list[0].main.humidity + "%");
+
+      // Day 2
+      $("#dayTwoDate").html(moment().add(2, "days").format("(MM/DD/YYYY)"));
+      $("#dayTwoIcon").attr(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          info.list[1].weather[0].icon +
+          ".png"
+      );
+      // Converts from K to F and rounds to nearest int
+      $("#dayTwoTemp").html(
+        Math.round(((info.list[1].main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#dayTwoHumidity").html(info.list[1].main.humidity + "%");
+
+      // Day 3
+      $("#dayThreeDate").html(moment().add(3, "days").format("(MM/DD/YYYY)"));
+      $("#dayThreeIcon").attr(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          info.list[2].weather[0].icon +
+          ".png"
+      );
+      // Converts from K to F and rounds to nearest int
+      $("#dayThreeTemp").html(
+        Math.round(((info.list[2].main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#dayThreeHumidity").html(info.list[2].main.humidity + "%");
+
+      // Day 4
+      $("#dayFourDate").html(moment().add(4, "days").format("(MM/DD/YYYY)"));
+      $("#dayFourIcon").attr(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          info.list[3].weather[0].icon +
+          ".png"
+      );
+      // Converts from K to F and rounds to nearest int
+      $("#dayFourTemp").html(
+        Math.round(((info.list[3].main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#dayFourHumidity").html(info.list[3].main.humidity + "%");
+
+      // Day 5
+      $("#dayFiveDate").html(moment().add(5, "days").format("(MM/DD/YYYY)"));
+      $("#dayFiveIcon").attr(
+        "src",
+        "http://openweathermap.org/img/w/" +
+          info.list[4].weather[0].icon +
+          ".png"
+      );
+      // Converts from K to F and rounds to nearest int
+      $("#dayFiveTemp").html(
+        Math.round(((info.list[4].main.temp - 273.15) * 9) / 5 + 32) + "°F"
+      );
+      $("#dayFiveHumidity").html(info.list[4].main.humidity + "%");
     });
   }
 
