@@ -1,11 +1,10 @@
-// 1. Save cities array to local storage so that it persists through refresh
+// 1. Add UV index data plus corresponding color
 // 2. Create div for 5 day forecast
 // 3. Create a div (module maybe?) for each of the next 5 days
 //   - date
 //   - temp
 //   - humidity
-// 4. Add UV index data plus corresponding color
-// 5. Reformat
+// 4. Reformat
 
 $(document).ready(function () {
   // My API Key
@@ -51,16 +50,22 @@ $(document).ready(function () {
   $("#add-city").on("click", function (event) {
     // This line grabs the input from the textbox
     let citySearch = $("#city-input").val().trim();
-    console.log(citySearch);
+    // Calls the display with the user input as the city
     displayCityWeather(citySearch);
+
+    // This prevents submitting a blank input
     if (citySearch !== "") {
-      //   // Adding city from the textbox to cities array
+      // Adding city from the textbox to cities array
       cities.push(citySearch);
+
+      // Save to local storage as JSON string
+      localStorage.setItem("cities", JSON.stringify(cities));
+
       // Clears textbox
       $("#city-input").val("");
+      // Renders buttons to page
       renderButtons();
     } else {
-      // This prevents submitting a blank input
       return;
     }
   });
@@ -69,13 +74,13 @@ $(document).ready(function () {
   function renderButtons() {
     // Clear existing buttons to prevent duplicates
     $("#buttons-view").empty();
-    // Loop through cities array
+    // Loop through cities array to create a button for each
     for (let i = 0; i < cities.length; i++) {
       let cityBtn = $("<button>");
       cityBtn.attr("data-name", cities[i]);
       cityBtn.text(cities[i]);
-      // Adds the new search as a button at the top of the list
       $("#buttons-view").prepend(cityBtn);
+      // creates an on click specific to each button passing the specific city as an argument
       $(document).on("click", "[data-name='" + cities[i] + "']", function (
         event
       ) {
@@ -83,7 +88,9 @@ $(document).ready(function () {
       });
     }
   }
+  // Get cities array from past searches that were saved to local storage
+  cities = JSON.parse(localStorage.getItem("cities"));
 
-  // Calling the renderButtons function to display the initial buttons
+  // Calling the renderButtons function to display the past search buttons
   renderButtons();
 });
