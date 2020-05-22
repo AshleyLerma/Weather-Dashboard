@@ -41,8 +41,25 @@ $(document).ready(function () {
       // Converts from meters per sec to miles per hour and rounds to nearest int
       $("#windSpeed").html(Math.round(response.wind.speed * 2.237) + " MPH");
 
-      //TODO: Add UV index data
-      $("#uvIndex").html();
+      getUV(response);
+    });
+  }
+
+  // UV Index function
+  function getUV(response) {
+    let uvIndex =
+      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      appID +
+      "&lat=" +
+      response.coord.lat +
+      "&lon=" +
+      response.coord.lon;
+
+    $.ajax({
+      url: uvIndex,
+      method: "GET",
+    }).then(function (data) {
+      $("#uvIndex").html(data.value);
     });
   }
 
