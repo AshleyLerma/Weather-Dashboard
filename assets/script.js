@@ -1,11 +1,10 @@
-// 1. Save cities array to local storage so that it persists through refresh
+// 1. Add UV index data plus corresponding color
 // 2. Create div for 5 day forecast
 // 3. Create a div (module maybe?) for each of the next 5 days
 //   - date
 //   - temp
 //   - humidity
-// 4. Add UV index data plus corresponding color
-// 5. Reformat
+// 4. Reformat
 
 $(document).ready(function () {
   // My API Key
@@ -54,14 +53,13 @@ $(document).ready(function () {
     // Calls the display with the user input as the city
     displayCityWeather(citySearch);
 
-    // TODO: get local storage
-
     // This prevents submitting a blank input
     if (citySearch !== "") {
       // Adding city from the textbox to cities array
       cities.push(citySearch);
 
-      // TODO: save to local storage
+      // Save to local storage as JSON string
+      localStorage.setItem("cities", JSON.stringify(cities));
 
       // Clears textbox
       $("#city-input").val("");
@@ -90,7 +88,9 @@ $(document).ready(function () {
       });
     }
   }
+  // Get cities array from past searches that were saved to local storage
+  cities = JSON.parse(localStorage.getItem("cities"));
 
-  // Calling the renderButtons function to display the initial buttons
+  // Calling the renderButtons function to display the past search buttons
   renderButtons();
 });
