@@ -60,6 +60,23 @@ $(document).ready(function () {
       method: "GET",
     }).then(function (data) {
       $("#uvIndex").html(data.value);
+
+      if (data.value < 3) {
+        $("#uvIndex")
+          .addClass("favorable")
+          .removeClass("moderate")
+          .removeClass("severe");
+      } else if (data.value >= 3 && data.value < 7) {
+        $("#uvIndex")
+          .addClass("moderate")
+          .removeClass("favorable")
+          .removeClass("severe");
+      } else {
+        $("#uvIndex")
+          .addClass("severe")
+          .removeClass("moderate")
+          .removeClass("favorable");
+      }
     });
   }
 
