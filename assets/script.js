@@ -7,7 +7,7 @@ $(document).ready(function () {
     // Calling the renderButtons function to display the past search buttons
     renderButtons();
   } else {
-    return;
+    cities = [];
   }
 
   // On click event for each button that sets a query parameter equal to the input city
