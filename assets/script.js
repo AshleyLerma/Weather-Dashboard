@@ -1,8 +1,11 @@
 $(document).ready(function () {
   // My API Key
   var appID = "3f8ee6c995827a58abf1e6cb5e587a74";
-  // Empty array for searched cities
-  var cities = [];
+  // Get cities array from past searches that were saved to local storage
+  var cities = JSON.parse(localStorage.getItem("cities"));
+
+  // Calling the renderButtons function to display the past search buttons
+  renderButtons();
 
   // On click event for each button that sets a query parameter equal to the input city
   function displayCityWeather(city) {
@@ -175,7 +178,7 @@ $(document).ready(function () {
       // Clears textbox
       $("#city-input").val("");
       // Renders buttons to page
-      renderButtons(cities);
+      renderButtons();
     } else {
       return;
     }
@@ -199,9 +202,4 @@ $(document).ready(function () {
       });
     }
   }
-  // Get cities array from past searches that were saved to local storage
-  cities = JSON.parse(localStorage.getItem("cities"));
-
-  // Calling the renderButtons function to display the past search buttons
-  renderButtons();
 });
