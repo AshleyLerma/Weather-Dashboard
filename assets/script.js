@@ -89,7 +89,7 @@ $(document).ready(function () {
       $("#dayOneDate").html(moment().add(1, "days").format("(MM/DD/YYYY)"));
       $("#dayOneIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
           info.list[0].weather[0].icon +
           ".png"
       );
