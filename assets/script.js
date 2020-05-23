@@ -175,7 +175,7 @@ $(document).ready(function () {
       // Clears textbox
       $("#city-input").val("");
       // Renders buttons to page
-      renderButtons();
+      renderButtons(cities);
     } else {
       return;
     }
