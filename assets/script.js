@@ -8,7 +8,7 @@ $(document).ready(function () {
   function displayCityWeather(city) {
     // Concatinates Query URL
     let weather =
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&APPID=" +
       appID;
@@ -23,7 +23,7 @@ $(document).ready(function () {
       $("#date").html(moment().format("(MM/DD/YYYY)"));
       $("#weatherIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
+        "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
       );
       // Converts from K to F and rounds to nearest int
       $("#temperature").html(
@@ -41,7 +41,7 @@ $(document).ready(function () {
   // UV Index function
   function getUV(response) {
     let uvIndex =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=" +
+      "https://api.openweathermap.org/data/2.5/uvi?appid=" +
       appID +
       "&lat=" +
       response.coord.lat +
@@ -76,7 +76,7 @@ $(document).ready(function () {
   // Five Day Forecast Function
   function getFiveDay(response) {
     let fiveDay =
-      "http://api.openweathermap.org/data/2.5/forecast?q=" +
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
       response.name +
       "&appid=" +
       appID;
@@ -103,7 +103,7 @@ $(document).ready(function () {
       $("#dayTwoDate").html(moment().add(2, "days").format("(MM/DD/YYYY)"));
       $("#dayTwoIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
           info.list[1].weather[0].icon +
           ".png"
       );
@@ -117,7 +117,7 @@ $(document).ready(function () {
       $("#dayThreeDate").html(moment().add(3, "days").format("(MM/DD/YYYY)"));
       $("#dayThreeIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
           info.list[2].weather[0].icon +
           ".png"
       );
@@ -131,7 +131,7 @@ $(document).ready(function () {
       $("#dayFourDate").html(moment().add(4, "days").format("(MM/DD/YYYY)"));
       $("#dayFourIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
           info.list[3].weather[0].icon +
           ".png"
       );
@@ -145,7 +145,7 @@ $(document).ready(function () {
       $("#dayFiveDate").html(moment().add(5, "days").format("(MM/DD/YYYY)"));
       $("#dayFiveIcon").attr(
         "src",
-        "http://openweathermap.org/img/w/" +
+        "https://openweathermap.org/img/w/" +
           info.list[4].weather[0].icon +
           ".png"
       );
