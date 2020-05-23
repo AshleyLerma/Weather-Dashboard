@@ -1,3 +1,22 @@
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#searches {
+  padding: 5px;
+  background-color: #e6e8e8;
+}
+
+#buttons-view {
+  width: 12rem;
+}
+
 .favorable {
   background-color: green;
 }
@@ -7,4 +26,12 @@
 }
 .severe {
   background-color: red;
+}
+
+.fiveday {
+  margin: 10px;
+}
+
+.day {
+  background-color: royalblue;
 }

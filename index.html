@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <!-- Search Button Row -->
-      <div class="row">
+      <aside class="row" id="searches">
         <div class="col">
           <form id="city-form">
             <input id="city-input" type="text" placeholder="City" />
@@ -23,53 +23,54 @@
               Search
             </button>
           </form>
-          <div id="buttons-view"></div>
+          <section class="card" id="buttons-view"></section>
         </div>
-      </div>
+      </aside>
       <!-- Current Weather Display Row -->
       <div class="row">
-        <div id="city-view" class="col">
+        <section id="city-view" class="col">
           <h2><span id="city"></span> <span id="date"></span></h2>
           <img id="weatherIcon" src="" />
           <p>Temperature: <span id="temperature"></span></p>
           <p>Humidity: <span id="humidity"></span></p>
           <p>Wind Speed: <span id="windSpeed"></span></p>
           <p>UV Index: <span id="uvIndex"></span></p>
+        </section>
+      </div>
+      <!-- Five Day Forecast Display Row -->
+      <section id="fiveDay-view" class="row">
+        <h2>Five Day Forecast:</h2>
+        <div class="col fiveday" id="dayOne">
+          <h3><span id="dayOneDate"></span></h3>
+          <img id="dayOneIcon" src="" />
+          <p><span id="dayOneTemp"></span></p>
+          <p><span id="dayOneHumidity"></span></p>
         </div>
-      </div>
-    </div>
-    <!-- Five Day Forecast Display Row -->
-    <div id="fiveDay-view" class="row">
-      <div class="col" id="dayOne">
-        <h3><span id="dayOneDate"></span></h3>
-        <img id="dayOneIcon" src="" />
-        <p><span id="dayOneTemp"></span></p>
-        <p><span id="dayOneHumidity"></span></p>
-      </div>
-      <div class="col" id="dayTwo">
-        <h3><span id="dayTwoDate"></span></h3>
-        <img id="dayTwoIcon" src="" />
-        <p><span id="dayTwoTemp"></span></p>
-        <p><span id="dayTwoHumidity"></span></p>
-      </div>
-      <div class="col" id="dayThree">
-        <h3><span id="dayThreeDate"></span></h3>
-        <img id="dayThreeIcon" src="" />
-        <p><span id="dayThreeTemp"></span></p>
-        <p><span id="dayThreeHumidity"></span></p>
-      </div>
-      <div class="col" id="dayFour">
-        <h3><span id="dayFourDate"></span></h3>
-        <img id="dayFourIcon" src="" />
-        <p><span id="dayFourTemp"></span></p>
-        <p><span id="dayFourHumidity"></span></p>
-      </div>
-      <div class="col" id="dayFive">
-        <h3><span id="dayFiveDate"></span></h3>
-        <img id="dayFiveIcon" src="" />
-        <p><span id="dayFiveTemp"></span></p>
-        <p><span id="dayFiveHumidity"></span></p>
-      </div>
+        <div class="col fiveday" id="dayTwo">
+          <h3><span id="dayTwoDate"></span></h3>
+          <img id="dayTwoIcon" src="" />
+          <p><span id="dayTwoTemp"></span></p>
+          <p><span id="dayTwoHumidity"></span></p>
+        </div>
+        <div class="col fiveday" id="dayThree">
+          <h3><span id="dayThreeDate"></span></h3>
+          <img id="dayThreeIcon" src="" />
+          <p><span id="dayThreeTemp"></span></p>
+          <p><span id="dayThreeHumidity"></span></p>
+        </div>
+        <div class="col fiveday" id="dayFour">
+          <h3><span id="dayFourDate"></span></h3>
+          <img id="dayFourIcon" src="" />
+          <p><span id="dayFourTemp"></span></p>
+          <p><span id="dayFourHumidity"></span></p>
+        </div>
+        <div class="col fiveday" id="dayFive">
+          <h3><span id="dayFiveDate"></span></h3>
+          <img id="dayFiveIcon" src="" />
+          <p><span id="dayFiveTemp"></span></p>
+          <p><span id="dayFiveHumidity"></span></p>
+        </div>
+      </section>
     </div>
     <!-- JS links -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
