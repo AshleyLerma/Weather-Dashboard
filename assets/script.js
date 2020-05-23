@@ -3,9 +3,12 @@ $(document).ready(function () {
   var appID = "3f8ee6c995827a58abf1e6cb5e587a74";
   // Get cities array from past searches that were saved to local storage
   var cities = JSON.parse(localStorage.getItem("cities"));
-
-  // Calling the renderButtons function to display the past search buttons
-  renderButtons();
+  if (cities !== null) {
+    // Calling the renderButtons function to display the past search buttons
+    renderButtons();
+  } else {
+    return;
+  }
 
   // On click event for each button that sets a query parameter equal to the input city
   function displayCityWeather(city) {
