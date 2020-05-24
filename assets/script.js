@@ -91,6 +91,8 @@ $(document).ready(function () {
       url: fiveDay,
       method: "GET",
     }).then(function (info) {
+      $(".fiveday").addClass("day");
+
       // Day 1
       $("#dayOneDate").html(moment().add(1, "days").format("(MM/DD/YYYY)"));
       $("#dayOneIcon").attr(

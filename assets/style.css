@@ -1,3 +1,33 @@
+body {
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#searches {
+  padding: 10px;
+  background-color: #e6e8e8;
+  height: 100%;
+  text-align: center;
+}
+
+#buttons-view {
+  width: 13rem;
+  margin: auto;
+}
+
+#city-view {
+  flex-direction: column;
+  padding: 20px;
+  margin: 5px;
+  border: solid 3px #e6e8e8;
+}
+
 .favorable {
   background-color: green;
 }
@@ -7,4 +37,17 @@
 }
 .severe {
   background-color: red;
+}
+#fiveDay-view {
+  margin: 20px;
+}
+
+.fiveday {
+  margin: 10px;
+}
+
+.day {
+  background-color: royalblue;
+  color: white;
+  margin: 20px;
 }
