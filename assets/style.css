@@ -10,7 +10,7 @@ body {
 }
 
 #searches {
-  padding: 5px;
+  padding: 10px;
   background-color: #e6e8e8;
   width: 300px;
   height: 100%;
@@ -18,6 +18,11 @@ body {
 
 #buttons-view {
   width: 12rem;
+}
+
+#city-view {
+  flex-direction: column;
+  padding: 20px;
 }
 
 .favorable {
@@ -37,4 +42,5 @@ body {
 
 .day {
   background-color: royalblue;
+  color: white;
 }
