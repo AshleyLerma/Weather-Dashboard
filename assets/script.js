@@ -31,6 +31,7 @@ $(document).ready(function () {
         "src",
         "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
       );
+      $("#weatherIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#temperature").html(
         Math.round(((response.main.temp - 273.15) * 9) / 5 + 32) + "°F"
@@ -101,6 +102,7 @@ $(document).ready(function () {
           info.list[0].weather[0].icon +
           ".png"
       );
+      $("#dayOneIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#dayOneTemp").html(
         Math.round(((info.list[0].main.temp - 273.15) * 9) / 5 + 32) + "°F"
@@ -115,6 +117,7 @@ $(document).ready(function () {
           info.list[1].weather[0].icon +
           ".png"
       );
+      $("#dayTwoIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#dayTwoTemp").html(
         Math.round(((info.list[1].main.temp - 273.15) * 9) / 5 + 32) + "°F"
@@ -129,6 +132,7 @@ $(document).ready(function () {
           info.list[2].weather[0].icon +
           ".png"
       );
+      $("#dayThreeIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#dayThreeTemp").html(
         Math.round(((info.list[2].main.temp - 273.15) * 9) / 5 + 32) + "°F"
@@ -143,6 +147,7 @@ $(document).ready(function () {
           info.list[3].weather[0].icon +
           ".png"
       );
+      $("#dayFourIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#dayFourTemp").html(
         Math.round(((info.list[3].main.temp - 273.15) * 9) / 5 + 32) + "°F"
@@ -157,6 +162,7 @@ $(document).ready(function () {
           info.list[4].weather[0].icon +
           ".png"
       );
+      $("#dayFiveIcon").attr("alt", "weather icon");
       // Converts from K to F and rounds to nearest int
       $("#dayFiveTemp").html(
         Math.round(((info.list[4].main.temp - 273.15) * 9) / 5 + 32) + "°F"
